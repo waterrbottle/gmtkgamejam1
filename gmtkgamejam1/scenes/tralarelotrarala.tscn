@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccxm3qi3ox2jg"]
+
+[ext_resource type="Script" uid="uid://cjth8w5creyiw" path="res://scenes/character_body_2d2.gd" id="1_cn2bo"]
+[ext_resource type="Texture2D" uid="uid://dc0srq7vrxpcj" path="res://assets/Grey_rough_granite_rock_seamless_stone_surface_texture.jpg" id="1_xmgt8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cn2bo"]
+size = Vector2(56, 70)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cn2bo"]
+radius = 82.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmgt8"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 555
+corner_radius_top_right = 555
+corner_radius_bottom_right = 555
+corner_radius_bottom_left = 555
+
+[node name="Tralarelotrarala" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(53, 494, 263, 916, 444, 926, 626, 880, 853, 880, 974, 831, 1285, 820, 1399, 789, 1634, 789, 1820, 736, 2039, 694, 2282, 566, 2708, 481, 2970, 389, 3031, 333, 3293, 306, 3555, 167, 4055, -26, 4440, -44, 4785, -266, 5117, -259, 5426, -347, 5623, -496, 5820, -583, 6039, -750, 6283, -927, 6441, -1125, 6632, -1263, 6928, -1408, 7106, -1507, 7665, -1684, 7922, -1947, 8346, -2291, 8662, -2515, 9038, -3080, 9255, -3476, 9571, -3910, 9683, -4194, 9716, 1320, 81, 1291)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+texture_repeat = 2
+texture = ExtResource("1_xmgt8")
+polygon = PackedVector2Array(85, 1288, 50, 483, 273, 918, 450, 930, 633, 880, 865, 881, 979, 832, 1296, 818, 1404, 792, 1635, 790, 2053, 696, 2289, 568, 2717, 485, 2980, 387, 3043, 333, 3302, 307, 4060, -23, 4452, -43, 4786, -264, 5127, -263, 5422, -347, 5630, -501, 5827, -582, 6288, -930, 6445, -1127, 6649, -1272, 7110, -1504, 7669, -1680, 7935, -1954, 8669, -2505, 9045, -3064, 9571, -3909, 9682, -4192, 9729, 1310)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_mask = 6
+platform_on_leave = 2
+platform_floor_layers = 4294967293
+safe_margin = 5.251
+script = ExtResource("1_cn2bo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_cn2bo")
+
+[node name="ColorRect" type="ColorRect" parent="CharacterBody2D"]
+offset_left = -38.0
+offset_top = -45.0
+offset_right = 38.0
+offset_bottom = 37.0
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(433, 821)
+shape = SubResource("CircleShape2D_cn2bo")
+
+[node name="Panel" type="Panel" parent="RigidBody2D"]
+offset_left = 351.0
+offset_top = 739.0
+offset_right = 532.0
+offset_bottom = 905.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xmgt8")
