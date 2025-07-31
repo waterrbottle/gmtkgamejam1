@@ -15,9 +15,13 @@ run/main_scene="uid://ccxm3qi3ox2jg"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://global.gd"
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/rmsmartshape/plugin.cfg")
+enabled=PackedStringArray()
 
 [rendering]
 

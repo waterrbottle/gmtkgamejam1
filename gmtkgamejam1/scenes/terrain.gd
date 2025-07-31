@@ -3,7 +3,7 @@ extends StaticBody2D
 
 @export_tool_button("make terrain!")
 var button = do_stuff
-var gensize = 1000
+var gensize = 1200
 var memory = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,17 +11,18 @@ func _ready() -> void:
 	
 	do_stuff()
 
+
 func do_stuff():
 	var gencurve = Curve2D.new()
 	gencurve.bake_interval = 200
 	for i in range(gensize):
 		var randi = randf_range(100,200)
 		
-		gencurve.add_point(Vector2(i*200, randi - (i*i)/10))
-		memory.append(randi - (i*i)/10)
+		gencurve.add_point(Vector2(i*200, randi - (i*i)/8))
+		memory.append(randi - (i*i)/8)
 
 	for i in range(gensize):
-		gencurve.add_point(Vector2(-200+gensize*200-i*200, memory[memory.size()-i-1]+ 1000 ))
+		gencurve.add_point(Vector2(-200+gensize*200-i*200, memory[memory.size()-i-1]+ 1500 ))
 	#gencurve.add_point(Vector2(gensize*200,0))
 	#gencurve.add_point(Vector2(0,500))
 	#gencurve.add_point(Vector2(600,600))

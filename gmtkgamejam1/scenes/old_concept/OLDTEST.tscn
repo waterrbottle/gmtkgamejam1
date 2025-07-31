@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://c7cbtwl0enc6g"]
 
 [ext_resource type="Script" uid="uid://d0rud1ld737cq" path="res://scenes/old_concept/logic.gd" id="1_e0cxh"]
-[ext_resource type="Script" uid="uid://b3lw1eg8kq4ik" path="res://scenes/old_concept/character_body_2d.gd" id="2_f80av"]
+[ext_resource type="Script" uid="uid://b3lw1eg8kq4ik" path="res://scenes/old_concept/characterMovement.gd" id="2_f80av"]
 [ext_resource type="Texture2D" uid="uid://df88e7u1vynao" path="res://assets/Solid_white_bordered.svg.png" id="3_xkqh3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbs6o"]
