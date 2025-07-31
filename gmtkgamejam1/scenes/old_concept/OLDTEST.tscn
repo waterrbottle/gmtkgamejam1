@@ -1,0 +1,119 @@
+[gd_scene load_steps=7 format=4 uid="uid://c7cbtwl0enc6g"]
+
+[ext_resource type="Script" uid="uid://d0rud1ld737cq" path="res://scenes/old_concept/logic.gd" id="1_e0cxh"]
+[ext_resource type="Script" uid="uid://b3lw1eg8kq4ik" path="res://scenes/old_concept/character_body_2d.gd" id="2_f80av"]
+[ext_resource type="Texture2D" uid="uid://df88e7u1vynao" path="res://assets/Solid_white_bordered.svg.png" id="3_xkqh3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbs6o"]
+size = Vector2(49, 50.82)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6akbm"]
+texture = ExtResource("3_xkqh3")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:3/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5y3fm"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_6akbm")
+
+[node name="Samplescene" type="Node2D"]
+script = ExtResource("1_e0cxh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -901.0
+offset_top = -1143.0
+offset_right = 4259.0
+offset_bottom = 2678.0
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+color = Color(0.16, 0.16, 0.16, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 48.0
+offset_bottom = 27.0
+text = "abc"
+
+[node name="go" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -73.0
+offset_bottom = 32.0
+grow_horizontal = 0
+text = "GO!!!!!!!"
+
+[node name="left" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -138.0
+offset_top = 1.0
+offset_right = -104.0
+offset_bottom = 33.0
+grow_horizontal = 0
+text = "<-"
+
+[node name="right" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -103.0
+offset_top = 1.0
+offset_right = -69.0
+offset_bottom = 33.0
+grow_horizontal = 0
+text = "->"
+
+[node name="up" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -173.0
+offset_right = -139.0
+offset_bottom = 32.0
+grow_horizontal = 0
+text = "^
+"
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(0, 27.18)
+script = ExtResource("2_f80av")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(14.5, 15.41)
+shape = SubResource("RectangleShape2D_lbs6o")
+
+[node name="ColorRect" type="ColorRect" parent="CharacterBody2D"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 40.0
+offset_bottom = 41.0
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAAWAAIAAAABAAEAAAAWAAMAAAABAAEAAAAWAAQAAAABAAEAAAAWAAUAAAABAAEAAAAWAAYAAAABAAEAAAAWAAcAAAABAAEAAAAWAAgAAAABAAEAAAAWAAkAAAABAAEAAAAWAAoAAAABAAEAAAAWAAsAAAABAAEAAAAWAAwAAAABAAEAAAATAAwAAAABAAEAAAASAAwAAAABAAEAAAARAAwAAAABAAEAAAAQAAwAAAABAAEAAAAPAAwAAAABAAEAAAAOAAwAAAABAAEAAAANAAwAAAABAAEAAAAMAAwAAAABAAEAAAALAAwAAAABAAEAAAAKAAwAAAABAAEAAAAJAAwAAAABAAEAAAAIAAwAAAABAAEAAAAHAAwAAAABAAEAAAAGAAwAAAABAAEAAAAFAAwAAAABAAEAAAAEAAwAAAABAAEAAAADAAwAAAABAAEAAAACAAwAAAABAAEAAAABAAwAAAABAAEAAAAAAAwAAAABAAEAAAD//wwAAAABAAEAAAD+/wwAAAABAAEAAAD9/wwAAAABAAEAAAD8/wwAAAABAAEAAAD8/wsAAAABAAEAAAD8/woAAAABAAEAAAD8/wkAAAABAAEAAAD8/wgAAAABAAEAAAD8/wcAAAABAAEAAAD8/wYAAAABAAEAAAD8/wUAAAABAAEAAAD8/wQAAAABAAEAAAD8/wMAAAABAAEAAAD8/wIAAAABAAEAAAD8/wEAAAABAAEAAAD8/wAAAAABAAEAAAAWAAAAAAABAAEAAAAWAAEAAAABAAEAAAATAAkAAAABAAEAAAASAAkAAAABAAEAAAARAAkAAAABAAEAAAASAAgAAAABAAEAAAASAAcAAAABAAEAAAASAAYAAAABAAEAAAASAAUAAAABAAEAAAASAAQAAAABAAEAAAAVAAYAAAABAAEAAAATAAMAAAABAAEAAAASAAMAAAABAAEAAAAWAP//AAABAAEAAAAVAP//AAABAAEAAAAUAP//AAABAAEAAAATAP//AAABAAEAAAASAP//AAABAAEAAAARAP//AAABAAEAAAANAAkAAAABAAEAAAANAAoAAAABAAEAAAANAAsAAAABAAEAAAAGAAoAAAABAAEAAAAGAAsAAAABAAEAAAALAAUAAAABAAEAAAAKAAUAAAABAAEAAAAJAAUAAAABAAEAAAAIAAUAAAABAAEAAAAQAP//AAABAAEAAAAPAP//AAABAAEAAAAOAP//AAABAAEAAAANAP//AAABAAEAAAAMAP//AAABAAEAAAALAP//AAABAAEAAAAKAP//AAABAAEAAAAJAP//AAABAAEAAAAIAP//AAABAAEAAAAHAP//AAABAAEAAAAGAP//AAABAAEAAAAFAP//AAABAAEAAAAEAP//AAABAAEAAAADAP//AAABAAEAAAACAP//AAABAAEAAAABAP//AAABAAEAAAAAAP//AAABAAEAAAD/////AAABAAEAAAD+////AAABAAEAAAD9////AAABAAEAAAD8////AAABAAEAAAD9/wYAAAABAAEAAAD+/wYAAAABAAEAAAD//wYAAAABAAEAAAAAAAYAAAABAAEAAAAAAAUAAAABAAEAAAAAAAQAAAABAAEAAAAFAAEAAAABAAEAAAAEAAEAAAABAAEAAAADAAEAAAABAAEAAAACAAEAAAABAAEAAAACAAIAAAABAAEAAAACAAMAAAABAAEAAAACAAQAAAABAAEAAAACAAUAAAABAAEAAAADAAQAAAABAAEAAAAEAAQAAAABAAEAAAAFAAQAAAABAAEAAAAGAAQAAAABAAEAAAAGAAEAAAABAAEAAAAGAAUAAAABAAEAAAADAAkAAAABAAEAAAADAAoAAAABAAEAAAADAAsAAAABAAEAAAACAAkAAAABAAEAAAABAAkAAAABAAEAAAAAAAkAAAABAAEAAAARAAUAAAABAAEAAAAQAAUAAAABAAEAAAAPAAUAAAABAAEAAAAOAAUAAAABAAEAAAAKAAgAAAABAAEAAAAJAAgAAAABAAEAAAAIAAgAAAABAAEAAAAIAAkAAAABAAEAAAAIAAoAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_5y3fm")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/go" to="." method="_on_go_pressed"]
+[connection signal="pressed" from="CanvasLayer/left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="CanvasLayer/right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="CanvasLayer/up" to="." method="_on_up_pressed"]
+[connection signal="timeout" from="Timer" to="CharacterBody2D" method="_on_timer_timeout"]
