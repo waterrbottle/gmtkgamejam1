@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=4 uid="uid://c7cbtwl0enc6g"]
 
-[ext_resource type="Script" uid="uid://d0rud1ld737cq" path="res://scenes/logic.gd" id="1_iy576"]
-[ext_resource type="Script" uid="uid://b3lw1eg8kq4ik" path="res://scenes/character_body_2d.gd" id="1_u7ln1"]
-[ext_resource type="Texture2D" uid="uid://df88e7u1vynao" path="res://assets/Solid_white_bordered.svg.png" id="2_iy576"]
+[ext_resource type="Script" uid="uid://d0rud1ld737cq" path="res://scenes/logic.gd" id="1_e0cxh"]
+[ext_resource type="Script" uid="uid://b3lw1eg8kq4ik" path="res://scenes/character_body_2d.gd" id="2_f80av"]
+[ext_resource type="Texture2D" uid="uid://df88e7u1vynao" path="res://assets/Solid_white_bordered.svg.png" id="3_xkqh3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbs6o"]
 size = Vector2(49, 50.82)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6akbm"]
-texture = ExtResource("2_iy576")
+texture = ExtResource("3_xkqh3")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:3/0 = 0
@@ -22,7 +22,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_6akbm")
 
 [node name="Samplescene" type="Node2D"]
-script = ExtResource("1_iy576")
+script = ExtResource("1_e0cxh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -901.0
@@ -91,7 +91,7 @@ text = "^
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(0, 27.18)
-script = ExtResource("1_u7ln1")
+script = ExtResource("2_f80av")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(14.5, 15.41)
