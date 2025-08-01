@@ -1,15 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccxm3qi3ox2jg"]
+[gd_scene load_steps=11 format=3 uid="uid://ccxm3qi3ox2jg"]
 
 [ext_resource type="Script" uid="uid://cjth8w5creyiw" path="res://scenes/character_body_2d2.gd" id="1_cn2bo"]
 [ext_resource type="Script" uid="uid://c0t4norygsfaa" path="res://scenes/terrain.gd" id="1_reuwu"]
 [ext_resource type="Script" uid="uid://mr1oxnek1c0g" path="res://scenes/gameLogic.gd" id="1_wmiul"]
 [ext_resource type="Texture2D" uid="uid://dc0srq7vrxpcj" path="res://assets/Grey_rough_granite_rock_seamless_stone_surface_texture.jpg" id="1_xmgt8"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_reuwu"]
-font_size = 32
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_reuwu"]
 load_path = "res://.godot/imported/tex_metal_fill.png-307d5ebcedc9e8c4f154a2c09687cb41.ctex"
+
+[sub_resource type="Curve2D" id="Curve2D_wmiul"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 153.045, 770.236)
+}
+point_count = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cn2bo"]
 size = Vector2(56, 70)
@@ -24,13 +27,18 @@ corner_radius_top_right = 555
 corner_radius_bottom_right = 555
 corner_radius_bottom_left = 555
 
+[sub_resource type="LabelSettings" id="LabelSettings_reuwu"]
+font_size = 32
+
 [node name="Tralarelotrarala" type="Node2D"]
 script = ExtResource("1_wmiul")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="points" type="Node2D" parent="."]
+
+[node name="bg" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="bg"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -38,15 +46,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 102.0
-offset_bottom = 31.0
-text = "altitude: 1m"
-label_settings = SubResource("LabelSettings_reuwu")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["ground"]]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_reuwu")
@@ -66,12 +66,36 @@ texture_mode = 1
 [node name="Path2D" type="Path2D" parent="StaticBody2D"]
 position = Vector2(1, 0)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" groups=["ground"]]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_mask = 6
+[node name="StaticBody2D2" type="StaticBody2D" parent="." groups=["ground"]]
+collision_layer = 4
+collision_mask = 7
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2"]
+texture_repeat = 2
+texture = ExtResource("1_xmgt8")
+polygon = PackedVector2Array(370, 779, 184, 421, 73, 302, -60, 74, -96, -238, -150, -242, -215, -511, -191, -799, -75, -893, 132, -913, 296, -789, 404, -715, 510, -891, 442, -1065, 735, -1207, -16, -1261, -674, -1261, -1181, -1249, -3182, -1326, -3179, -1034, -3160, -159, -3261, 2205, -1751, 2188, 330, 2146)
+
+[node name="Line2D" type="Line2D" parent="StaticBody2D2"]
+texture_repeat = 2
+position = Vector2(2, 0)
+points = PackedVector2Array(-4, 215, -102, -233, -134, -237, -221, -500, -190, -806, -60, -909, 130, -911, 393, -719, 518, -897, 444, -1065, 723, -1209, -460, -1268, -1969, -1258)
+width = 50.0
+texture = SubResource("CompressedTexture2D_reuwu")
+texture_mode = 1
+
+[node name="Path2D" type="Path2D" parent="StaticBody2D2"]
+position = Vector2(1, 0)
+curve = SubResource("Curve2D_wmiul")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(170, 769, 72, 415, 25, 397, -101, -243, -137, -249, -223, -502, -189, -801, -59, -898, 90, -917, 376, -736, 533, -889, 472, -1052, 688, -1179, 949, -1187, 949, -1293, -1730, -1317, -1722, 1036, -132, 1309)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
+collision_mask = 14
 platform_on_leave = 2
-platform_floor_layers = 4294967293
+platform_floor_layers = 4294967287
 safe_margin = 5.251
 script = ExtResource("1_cn2bo")
 
@@ -83,13 +107,14 @@ offset_left = -38.0
 offset_top = -45.0
 offset_right = 38.0
 offset_bottom = 37.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-collision_layer = 2
-collision_mask = 5
-mass = 2.0
+collision_layer = 8
+collision_mask = 7
+mass = 1.5
 gravity_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
@@ -102,3 +127,37 @@ offset_top = 739.0
 offset_right = 517.0
 offset_bottom = 905.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xmgt8")
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="altitudelabel" type="Label" parent="ui"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 194.0
+offset_bottom = 53.0
+text = "altitude: 1m"
+label_settings = SubResource("LabelSettings_reuwu")
+
+[node name="moneylabel" type="Label" parent="ui"]
+offset_left = 8.0
+offset_top = 50.0
+offset_right = 194.0
+offset_bottom = 95.0
+text = "money: 0"
+label_settings = SubResource("LabelSettings_reuwu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -342.0
+offset_bottom = 248.0
+grow_horizontal = 0
+
+[node name="Button" type="Button" parent="ui/VBoxContainer"]
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

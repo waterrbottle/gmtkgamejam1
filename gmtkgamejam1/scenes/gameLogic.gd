@@ -1,13 +1,32 @@
 extends Node2D
-
-
+var collectable = load("res://scenes/collectable/collectable.tscn")
+var enemy = load("res://scenes/enemy/enemy.tscn")
+var arrow = load("res://scenes/arrow/arrow.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$CharacterBody2D.position = Vector2(10000,-500)
-	$RigidBody2D.position = Vector2(10000,-1000)
-	pass # Replace with function body.
+	$CharacterBody2D.position = Vector2(10000,-5000)
+	$RigidBody2D.position = Vector2(10000,-5000)
+	var sep = 0.5
+	for i in range(10000):
+		var inst = collectable.instantiate()
+		inst.position = Vector2(200/sep*i+randf_range(-5000,500), (-i*i*2/8/(sep*sep)-100+randf_range(-700,100)))
+		$points.add_child(inst)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$CanvasLayer/Label.text = "altitude: " + str(floor((Global.playerpos.y * -10))/1000 + -1)
+	$ui/altitudelabel.text = "altitude: " + str(floor((Global.playerpos.y / -100))/10 + 0)
+	$ui/moneylabel.text = "money: " +str(Global.money)
+	$Timer.wait_time=  7- (floor((Global.playerpos.y / -100))/10 + 0)/5
+	if Input.is_action_just_pressed("click"):
+		var inst = arrow.instantiate()
+		inst.position =  Global.playerpos
+		inst.velocity = (get_global_mouse_position()-Global.playerpos).normalized() * 2000 + Vector2(0,-100) +$CharacterBody2D.velocity
+		print((get_global_mouse_position()-Global.playerpos).normalized() )
+		add_child(inst)
+
+
+func _on_timer_timeout() -> void:
+	var inst = enemy.instantiate()
+	inst.position = Global.playerpos + Vector2(0,-1000)
+	add_child(inst)

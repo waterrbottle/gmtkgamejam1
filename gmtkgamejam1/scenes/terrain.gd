@@ -16,13 +16,13 @@ func do_stuff():
 	var gencurve = Curve2D.new()
 	gencurve.bake_interval = 200
 	for i in range(gensize):
-		var randi = randf_range(100,200)
+		var randi = randf_range(50-floor(i/gensize)*100,200)
 		
-		gencurve.add_point(Vector2(i*200, randi - (i*i)/8))
-		memory.append(randi - (i*i)/8)
+		gencurve.add_point(Vector2(i*200, randi - (i*i*2)/8))
+		memory.append(randi - (i*i*2)/8)
 
 	for i in range(gensize):
-		gencurve.add_point(Vector2(-200+gensize*200-i*200, memory[memory.size()-i-1]+ 1500 ))
+		gencurve.add_point(Vector2(-200+gensize*200-i*200, memory[memory.size()-i-1]+ 4000 ))
 	#gencurve.add_point(Vector2(gensize*200,0))
 	#gencurve.add_point(Vector2(0,500))
 	#gencurve.add_point(Vector2(600,600))
