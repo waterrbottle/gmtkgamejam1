@@ -313,7 +313,6 @@ texture = ExtResource("3_rgqlh")
 [node name="Line2D" type="Line2D" parent="StaticBody2D"]
 texture_repeat = 2
 position = Vector2(1, 0)
-points = PackedVector2Array(2393, -88, 2469, 1180)
 closed = true
 width = 50.0
 texture = ExtResource("4_3cwei")
@@ -465,6 +464,7 @@ offset_bottom = 191.0
 
 [node name="TextureRect2" type="TextureRect" parent="ui/vase"]
 clip_children = 2
+layout_mode = 0
 offset_right = 170.0
 offset_bottom = 170.0
 texture = ExtResource("8_yg1b8")
@@ -479,6 +479,7 @@ offset_bottom = 171.0
 color = Color(1, 0.836, 0.59, 1)
 
 [node name="TextureRect" type="TextureRect" parent="ui/vase"]
+layout_mode = 0
 offset_right = 170.0
 offset_bottom = 170.0
 texture = ExtResource("9_vj621")
