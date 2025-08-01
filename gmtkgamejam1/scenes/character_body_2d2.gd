@@ -8,12 +8,12 @@ const JUMP_VELOCITY = -1000.0
 func _physics_process(delta: float) -> void:
 	if air[0] == true:
 
-		$Camera2D.zoom = Vector2(1+(position.y-air[1])/3500,1+(position.y-air[1])/3500)
-		if $Camera2D.zoom.x < 0.3:
-			$Camera2D.zoom = Vector2(0.3,0.3)
+		$Camera2D.zoom = Vector2(0.6+(position.y-air[1])/2000,0.6+(position.y-air[1])/2000)
+		if $Camera2D.zoom.x < 0.2:
+			$Camera2D.zoom = Vector2(0.2,0.2)
 		
 	else:
-		$Camera2D.zoom = Vector2(1,1)
+		$Camera2D.zoom = Vector2(0.6,0.6)
 	Global.playerpos = position
 	# Add the gravity.
 	if not is_on_floor():
@@ -34,17 +34,19 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	var push_force = 30.0
-
 	# after calling move_and_slide()
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		if c.get_collider() is RigidBody2D:
 			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
+			if Input.is_key_pressed(KEY_0):
+				c.get_collider().apply_central_impulse(-c.get_normal() * push_force * 50 + Vector2(0,-2000))
+		
 	
 	if is_on_floor():
 		if air[0] == true:
 			var tween = get_tree().create_tween()
 			#tween.tween_property($Camera2D, "modulate", Color.RED, 1)
-			tween.tween_property($Camera2D, "zoom", Vector2(1,1), 0.5)
+			tween.tween_property($Camera2D, "zoom", Vector2(0.6,0.6), 0.5)
 			#tween.tween_callback($Camera2D.queue_free)
 			air[0] = false

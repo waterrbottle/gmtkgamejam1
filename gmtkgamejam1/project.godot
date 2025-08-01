@@ -11,13 +11,22 @@ config_version=5
 [application]
 
 config/name="gmtkgamejam1"
-run/main_scene="uid://ccxm3qi3ox2jg"
+run/main_scene="uid://bkw8ream5xy7y"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/image="uid://dw0tsmndu3k5a"
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://global.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 

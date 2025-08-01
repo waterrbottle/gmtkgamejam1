@@ -1,6 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkw8ream5xy7y"]
+[gd_scene load_steps=27 format=3 uid="uid://bkw8ream5xy7y"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://cxtp5i2qj1kof" path="res://scenes/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="FontFile" uid="uid://blnoab1bij17" path="res://assets/Bakbak_One,Be_Vietnam_Pro,Eagle_Lake,Lexend_Deca,Outfit/Eagle_Lake/EagleLake-Regular.ttf" id="2_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://cq7qyaqfmvvia" path="res://assets/2.PNG" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://10q3h5jqymey" path="res://assets/1.PNG" id="2_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://bqv08poxpi22m" path="res://assets/5.PNG" id="3_oa1go"]
+[ext_resource type="FontFile" uid="uid://dkasunfmvknqv" path="res://assets/Lexend_Deca-2/static/LexendDeca-Bold.ttf" id="3_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://chimklve4wocf" path="res://assets/4.PNG" id="4_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://w33xfw34pses" path="res://assets/3.PNG" id="5_jk1qb"]
+[ext_resource type="FontFile" uid="uid://bs3u4crwpvhs0" path="res://assets/Lexend_Deca-2/static/LexendDeca-Medium.ttf" id="7_oa1go"]
+[ext_resource type="FontFile" uid="uid://b2iomiywogn2l" path="res://assets/Eagle_Lake/EagleLake-Regular.ttf" id="10_lgwnu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vue75"]
 
@@ -31,7 +40,193 @@ corner_radius_bottom_left = 16
 shadow_size = 5
 shadow_offset = Vector2(0, 4)
 
-[node name="MainMenu" type="Control"]
+[sub_resource type="LabelSettings" id="LabelSettings_flqon"]
+font = ExtResource("2_5dd4i")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_l6cm7"]
+font = ExtResource("7_oa1go")
+font_size = 32
+
+[sub_resource type="Gradient" id="Gradient_l6cm7"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ekxnf"]
+gradient = SubResource("Gradient_l6cm7")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0.568376, 1)
+
+[sub_resource type="Animation" id="Animation_bqqt6"]
+resource_name = "fadein"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2500, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.2, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.2, 2)
+}
+
+[sub_resource type="Animation" id="Animation_wu84c"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2064, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ln24"]
+_data = {
+&"RESET": SubResource("Animation_wu84c"),
+&"fadein": SubResource("Animation_bqqt6")
+}
+
+[sub_resource type="Animation" id="Animation_l6cm7"]
+resource_name = "fadeout"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_ekxnf"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bqqt6"]
+_data = {
+&"RESET": SubResource("Animation_ekxnf"),
+&"fadeout": SubResource("Animation_l6cm7")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_jk1qb"]
+font = ExtResource("3_tbmy8")
+font_size = 64
+outline_size = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_ekxnf"]
+font = ExtResource("10_lgwnu")
+font_size = 36
+font_color = Color(0.870588, 0.486275, 0.105882, 1)
+
+[node name="gme" type="Node2D"]
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="ui"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,22 +235,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -202.5
-offset_top = -83.0
-offset_right = 202.5
-offset_bottom = 182.0
+offset_left = -222.5
+offset_top = -103.0
+offset_right = 182.5
+offset_bottom = 162.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 8
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="ui/Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -69,7 +264,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_bqqt6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
 text = "Start game"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Button2" type="Button" parent="ui/Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -84,7 +279,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
 text = "Options
 "
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Button3" type="Button" parent="ui/Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -99,24 +294,237 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
 text = "Exit
 "
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="ui/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.19
 anchor_right = 0.5
 anchor_bottom = 0.19
-offset_left = -201.5
-offset_top = -31.12
-offset_right = 201.5
-offset_bottom = 59.88
+offset_left = -221.5
+offset_top = -38.72
+offset_right = 181.5
+offset_bottom = 52.28
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 66
-text = "hehehehheh"
+text = "gra"
+label_settings = SubResource("LabelSettings_flqon")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]
+[node name="ColorRect" type="ColorRect" parent="ui/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ui/Control/ColorRect"]
+visible = false
+clip_children = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -313.5
+offset_top = -11.5
+offset_right = 313.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "No ai was used to create assets or code for this game.
+All assets are made by us :)"
+label_settings = SubResource("LabelSettings_l6cm7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ui/Control/ColorRect/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2500.0
+offset_top = 3.0
+offset_right = -1110.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ekxnf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ui/Control/ColorRect/Label/TextureRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_8ln24")
+}
+autoplay = "fadein"
+
+[node name="fadeout" type="AnimationPlayer" parent="ui/Control/ColorRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_bqqt6")
+}
+speed_scale = 3.0
+
+[node name="Label2" type="Label" parent="ui/Control/ColorRect"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -37.5
+offset_right = 26.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Młoda
+Piękna
+Polska"
+label_settings = SubResource("LabelSettings_jk1qb")
+
+[node name="ColorRect" type="ColorRect" parent="ui/Control/ColorRect/Label2"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 83.0
+offset_right = 227.0
+offset_bottom = 177.0
+color = Color(1, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="ui/Control"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="ColorRect2" type="ColorRect" parent="ui/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.160784, 0.0666667, 0, 1)
+
+[node name="TextureRect5" type="TextureRect" parent="ui/Control/ColorRect2"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -765.0
+offset_right = 3622.0
+offset_bottom = 395.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("2_rtw2f")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="ui/Control/ColorRect2"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -519.0
+offset_right = 3615.0
+offset_bottom = 1644.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("3_oa1go")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="ui/Control/ColorRect2"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -463.0
+offset_right = 3615.0
+offset_bottom = 1467.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("4_tbmy8")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="ui/Control/ColorRect2"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -274.0
+offset_top = -305.0
+offset_right = 6878.0
+offset_bottom = 966.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("5_jk1qb")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ui/Control/ColorRect2"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -250.0
+offset_right = 3615.0
+offset_bottom = 792.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("2_ekxnf")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="ui/Control/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -405.0
+offset_top = -142.0
+offset_right = 407.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "The Gods are currently creating
+ mountains for your enslavement"
+label_settings = SubResource("LabelSettings_ekxnf")
+horizontal_alignment = 1
+
+[node name="Timer2" type="Timer" parent="ui/Control"]
+wait_time = 0.05
+one_shot = true
+
+[node name="Timer3" type="Timer" parent="ui/Control"]
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="ui/Control/VBoxContainer/Button" to="ui/Control" method="_on_start_pressed"]
+[connection signal="pressed" from="ui/Control/VBoxContainer/Button2" to="ui/Control" method="_on_settings_pressed"]
+[connection signal="pressed" from="ui/Control/VBoxContainer/Button3" to="ui/Control" method="_on_exit_pressed"]
+[connection signal="animation_finished" from="ui/Control/ColorRect/fadeout" to="." method="_on_fadeout_animation_finished"]
+[connection signal="animation_finished" from="ui/Control/ColorRect/fadeout" to="ui/Control" method="_on_fadeout_animation_finished"]
+[connection signal="timeout" from="ui/Control/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ui/Control/Timer" to="ui/Control" method="_on_timer_timeout"]
+[connection signal="timeout" from="ui/Control/Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="ui/Control/Timer2" to="ui/Control" method="_on_timer_2_timeout"]
+[connection signal="timeout" from="ui/Control/Timer3" to="ui/Control" method="_on_timer_3_timeout"]

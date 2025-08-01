@@ -22,7 +22,7 @@ func do_stuff():
 		memory.append(randi - (i*i*2)/8)
 
 	for i in range(gensize):
-		gencurve.add_point(Vector2(-200+gensize*200-i*200, memory[memory.size()-i-1]+ 4000 ))
+		gencurve.add_point(Vector2(-200+gensize*200-i*200, memory[memory.size()-i-1]+ 8000 ))
 	#gencurve.add_point(Vector2(gensize*200,0))
 	#gencurve.add_point(Vector2(0,500))
 	#gencurve.add_point(Vector2(600,600))
