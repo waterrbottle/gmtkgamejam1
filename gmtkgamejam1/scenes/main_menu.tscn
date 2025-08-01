@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=27 format=3 uid="uid://bkw8ream5xy7y"]
+=======
+[gd_scene load_steps=6 format=3 uid="uid://b3p2vj76n17e4"]
+>>>>>>> 11dc6fa3cff498ec382aae10fd35120f4bf43d40
 
 [ext_resource type="Script" uid="uid://cxtp5i2qj1kof" path="res://scenes/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="FontFile" uid="uid://blnoab1bij17" path="res://assets/Bakbak_One,Be_Vietnam_Pro,Eagle_Lake,Lexend_Deca,Outfit/Eagle_Lake/EagleLake-Regular.ttf" id="2_5dd4i"]
